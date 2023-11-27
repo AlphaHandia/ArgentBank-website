@@ -1,11 +1,11 @@
 // Redux
 
 import { configureStore } from "@reduxjs/toolkit";
-import rootReucer from "./reducers";
+import rootReducer from "./reducers";
 
 // Configuration du store Redux
 const store = configureStore({
-    reducer: rootReucer,
+    reducer: rootReducer,
     //activationde l'extension Redux DevTools pour le débogage
     devTools: true,
   });

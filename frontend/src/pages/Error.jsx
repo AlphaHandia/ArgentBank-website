@@ -1,5 +1,5 @@
 import React from "react";
-import Err404 from "../components/Error404/Error404";
+import Error404 from "../components/Err404/error404";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
@@ -7,7 +7,7 @@ const Error = () => {
     return (
         <div>
             <Navbar />
-            <Err404 />
+            <Error404 />
             <Footer />
         </div>
     )

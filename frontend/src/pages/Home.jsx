@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar/Navbar";
 import Banner from "../components/Banner/Banner";
 import Feature from "../components/Feature/Feature";
 import Footer from "../components/Footer/Footer";
-import chatIcon from "../../../Backend/designs/img/icon-chat.png";
-import moneyIcon from "../assets/icon-money.webp";
-import securityIcon from "../assets/icon-security.webp";
+import chatIcon from "../assets/images/icon-chat.png";
+import moneyIcon from "../assets/images/icon-money.png";
+import securityIcon from "../assets/images/icon-security.png";
 
 const Home = () =>{
 return (

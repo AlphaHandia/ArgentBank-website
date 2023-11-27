@@ -4,12 +4,12 @@ import{useDispatch, useSelector} from "react-redux";
 import"./Navbar.css";
 import{PostUserProfile} from "../../actions/post.userprofile.action";
 import{logoutUser} from "../../actions/post.user.action";
-import logo from"../../../../Backend/designs/img/argentBankLogo.png";
+import logo from"../../assets/images/argentBankLogo.png";
 
 const Navbar =() => {
     //verification que le token de l'usager est stocké dans le Storage
 const tokenLocalStorage=localStorage.getItem("Token");
-const tokenSessionStorage=sessionStorage.getitem("token");
+const tokenSessionStorage=sessionStorage.getItem("token");
 const token = tokenLocalStorage || tokenSessionStorage;
 //Recupération du profil utilisateur depuis redux store
 const userProfile = useSelector((state) => state.UserReducer.userProfile);
