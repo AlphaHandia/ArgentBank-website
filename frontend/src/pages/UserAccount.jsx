@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import MainAccount from "../components/MainAccount/MainAccount";
+import MainAccount from "../components/UserWelcome/MainAccount";
 import Account from "../components/Account/Account";
 const User = () => {
     return (
