@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../actions/post.user.action";
 import { useNavigate } from "react-router-dom";
-import "./form.css";
+
 
 const Form = () => {
   // Définition des états du formulaire
