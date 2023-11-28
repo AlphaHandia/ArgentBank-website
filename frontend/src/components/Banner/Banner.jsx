@@ -3,8 +3,8 @@ import "./banner.css";
 
 const Banner = () => {
   return (
-    <div className="hero">
-      <section className="hero-content">
+    <div className="banner">
+      <section className="banner-content">
         <h2 className="sr-only">Promoted Content</h2>
         <p className="subtitle">No fees.</p>
         <p className="subtitle">No minimum deposit.</p>
