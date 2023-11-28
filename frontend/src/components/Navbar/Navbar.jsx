@@ -4,7 +4,7 @@ import{useDispatch, useSelector} from "react-redux";
 import"./Navbar.css";
 import{PostUserProfile} from "../../actions/post.userprofile.action";
 import{logoutUser} from "../../actions/post.user.action";
-import logo from"../../assets/images/argentBankLogo.png";
+import logo from"../../assets/images/argentBankLogo.webp";
 
 const Navbar =() => {
     //verification que le token de l'usager est stocké dans le Storage
