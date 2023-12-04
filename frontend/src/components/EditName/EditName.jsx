@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./editName.css";
-import { changeUserName } from "../../actions/put.username.action";
+import { changeUserName } from "../../features/user/userSlice"; 
 
 const EditName = ({ setIsEditing }) => {
   // Récupère la fonction dispatch du store Redux
   const dispatch = useDispatch();
   // Sélectionne les données de l'utilisateur à partir du store Redux
-  const userProfile = useSelector((state) => state.UserReducer.userProfile);
+  const userProfile = useSelector((state) => state.user.userProfile); 
+
   // Initialise une variable d'état pour le nouveau nom d'utilisateur
   const [newUserName, setNewUserName] = useState("");
 
@@ -20,7 +21,8 @@ const EditName = ({ setIsEditing }) => {
       setNewUserName("");
     }
   };
-    // Fonction appelée lorsque l'utilisateur clique sur "Cancel" pour annuler les modifications
+
+  // Fonction appelée lorsque l'utilisateur clique sur "Cancel" pour annuler les modifications
   const handleCancel = () => {
     // Réinitialise le champ de saisie du nouveau nom d'utilisateur et masque le formulaire d'édition
     setIsEditing(false);

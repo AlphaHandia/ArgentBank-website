@@ -15,7 +15,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/user-account" element={<UserAccount />} />
         </Route>
-        <Route path="/*" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

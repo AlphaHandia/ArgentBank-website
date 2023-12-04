@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import UserWelcome from "../components/UserWelcome/userwelcome";
+import UserWelcome from "../components/UserWelcome/Userwelcome";
 import Account from "../components/Account/Account";
+
 const User = () => {
     return (
       <div className="page_account">

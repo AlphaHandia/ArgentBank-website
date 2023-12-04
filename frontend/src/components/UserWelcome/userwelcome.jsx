@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./userwelcome.css";
-import { PostUserProfile } from "../../actions/post.userprofile.action";
+import { postUserProfile } from "../../features/user/userActions";
+import { changeUserName } from "../../features/user/userSlice";
 import EditName from "../EditName/EditName";
 
 const UserWelcome = () => {
   const dispatch = useDispatch();
-  const userProfile = useSelector((state) => state.UserReducer.userProfile);
+  const userProfile = useSelector((state) => state.user.userProfile);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    dispatch(PostUserProfile());
+    dispatch(postUserProfile());
   }, [dispatch]);
+
+  const handleEditName = (newUserName) => {
+    dispatch(changeUserName(newUserName));
+    setIsEditing(false);
+  };
 
   return (
     <div className="header">
       {isEditing ? (
-        <EditName setIsEditing={setIsEditing} />
+        <EditName
+          setIsEditing={setIsEditing}
+          currentUserName={userProfile.userName}
+          onEditName={handleEditName}
+        />
       ) : (
         <>
           <h1>
             Welcome back
             <br />
-            {userProfile.userName} !
+            {userProfile && userProfile.userName} !
           </h1>
           <button className="edit-button" onClick={() => setIsEditing(true)}>
             Edit Name
