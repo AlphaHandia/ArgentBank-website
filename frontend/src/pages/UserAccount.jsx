@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import MainAccount from "../components/UserWelcome/MainAccount";
+import UserWelcome from "../components/UserWelcome/userwelcome";
 import Account from "../components/Account/Account";
 const User = () => {
     return (
       <div className="page_account">
         <Navbar />
         <main className="main bg-dark">
-          <MainAccount />
+          <UserWelcome />
           <Account
             accountType="Checking"
             accountNumber="x8349"

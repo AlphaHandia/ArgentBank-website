@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./mainAccount.css";
+import "./userwelcome.css";
 import { PostUserProfile } from "../../actions/post.userprofile.action";
 import EditName from "../EditName/EditName";
 
-const MainAccount = () => {
+const UserWelcome = () => {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.UserReducer.userProfile);
   const [isEditing, setIsEditing] = useState(false);
@@ -34,4 +34,4 @@ const MainAccount = () => {
   );
 };
 
-export default MainAccount;
+export default UserWelcome;

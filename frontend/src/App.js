@@ -10,12 +10,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/ArgentBank" element={<Home />} />
+        <Route path="/argentBank" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route path="/user-account" element={<UserAccount />} />
         </Route>
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
