@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../features/user/userActions"; 
+import { loginUserAsync } from "../../features/user/userSlice"; 
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
@@ -19,7 +19,7 @@ const Form = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     // Appel de l'action Redux pour la connexion de l'utilisateur
-    dispatch(loginUser(email, password, navigate, rememberMe));
+    dispatch(loginUserAsync(email, password, navigate, rememberMe));
   };
 
   let errorMessage = null;
@@ -67,10 +67,11 @@ const Form = () => {
           <button className="sign-in-button" type="submit">
             Sign In
           </button>
+          console.log("ok bouton")
         </form>
       </section>
     </main>
   );
 };
-
+console.log("ok bouton")
 export default Form;

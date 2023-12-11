@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./editName.css";
-import { changeUserName } from "../../features/user/userSlice"; 
+import { putUserNameAsync } from "../../features/user/userSlice"; 
 
 const EditName = ({ setIsEditing }) => {
   // Récupère la fonction dispatch du store Redux
@@ -16,7 +16,7 @@ const EditName = ({ setIsEditing }) => {
   const handlechangeUserName = async () => {
     if (newUserName) {
       // Dispatche une action Redux pour changer le nom d'utilisateur
-      dispatch(changeUserName(newUserName));
+      await dispatch(putUserNameAsync(newUserName));
       setIsEditing(false);
       setNewUserName("");
     }

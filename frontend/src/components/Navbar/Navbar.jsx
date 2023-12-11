@@ -2,8 +2,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
-import { postUserProfile } from "../../features/user/userActions"; 
-import { logoutUser } from "../../features/user/userSlice";
+import { postUserProfileAsync, logoutUserAsync } from "../../features/user/userSlice";
 import logo from "../../assets/images/argentBankLogo.webp";
 
 const Navbar = () => {
@@ -23,7 +22,7 @@ const Navbar = () => {
   const handleSignOut = (e) => {
     e.preventDefault();
     // Déconnexion de l'usager
-    dispatch(logoutUser());
+    dispatch(logoutUserAsync());
         navigate("/argentBank");
        sessionStorage.removeItem('token',token)
         localStorage.clear('token',token);
@@ -32,11 +31,16 @@ const Navbar = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-      
-    // Après la connexion, récupérez le profil de l'utilisateur
-   dispatch(postUserProfile());
-    // Naviguez vers la page d'accueil ou une autre page appropriée
-    navigate("/login");
+
+    try {
+      // Utilisation de l'action asynchrone postUserProfile
+      await dispatch(postUserProfileAsync());
+      navigate("/login");
+    } catch (error) {
+      console.error("Une erreur s'est produite lors de la connexion :", error);
+      // Gérer les erreurs si nécessaire
+    }
+  
   };
   // Utilisation de useEffect pour la récupération du profil avant de rendre la barre de navigation en fonction de l'authentification de l'usager connecté par token.
   if (userProfile) {
