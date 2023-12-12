@@ -6,19 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 
 const Form = () => {
-  // Définition des états du formulaire
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  // Accès aux fonctions et données de Redux
+
   const dispatch = useDispatch();
   const loginError = useSelector((state) => state.user.loginError);
   const token = useSelector((state) => state.user.token);
   const userProfile =useSelector((state) =>state.user.userProfile)
-  // Accès à la fonction de navigation de React Router
+
   const navigate = useNavigate();
-// Effet pour rediriger l'utilisateur après la connexion
+
 useEffect(() => {
   console.log("User Profile:", userProfile);
   if (userProfile) {
@@ -28,10 +28,10 @@ useEffect(() => {
   }
 }, [token, userProfile, navigate]);
 
-  // Gestionnaire de soumission du formulaire
+
   const handleSignIn = (e) => {
     e.preventDefault();
-    // Appel de l'action Redux pour la connexion de l'utilisateur
+
     dispatch(loginUserAsync({ email, password, rememberMe }));
   };
 

@@ -32,7 +32,6 @@ const Navbar = () => {
   };
   
 
-  // Utilisation de useEffect pour la récupération du profil avant de rendre la barre de navigation en fonction de l'authentification de l'usager connecté par token.
   if (userProfile) {
     return (
       <nav className="main-nav">

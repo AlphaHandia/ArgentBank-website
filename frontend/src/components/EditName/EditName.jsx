@@ -15,9 +15,9 @@ const EditName = ({ setIsEditing }) => {
     }
   };
 
-  // Fonction appelée lorsque l'utilisateur clique sur "Cancel" pour annuler les modifications
+ 
   const handleCancel = () => {
-    // Réinitialise le champ de saisie du nouveau nom d'utilisateur et masque le formulaire d'édition
+   
     setIsEditing(false);
     setNewUserName("");
   };
