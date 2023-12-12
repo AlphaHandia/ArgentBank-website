@@ -1,52 +1,42 @@
 
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import "./Navbar.css";
-import { postUserProfileAsync, logoutUserAsync } from "../../features/user/userSlice";
-import logo from "../../assets/images/argentBankLogo.webp";
+import React from 'react';
+import logo from "../../assets/images/argentBankLogo.webp"
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {logoutUser } from '../../features/user/userSlice';
+import {postUserProfile} from '../../features/user/userThunks';
 
 const Navbar = () => {
-  // Vérification que le token de l'usager est stocké dans le Storage
-  const tokenLocalStorage = localStorage.getItem("Token");
-  const tokenSessionStorage = sessionStorage.getItem("token");
+  const tokenLocalStorage = localStorage.getItem('Token');
+  const tokenSessionStorage = sessionStorage.getItem('token');
   let token = tokenLocalStorage || tokenSessionStorage;
-  console.log(token);
 
-  // Récupération du profil utilisateur depuis Redux store
-  const userProfile = useSelector((state) => state.user.userProfile); 
-  console.log(userProfile);
-  
+  const userProfile = useSelector((state) => state.user.userProfile);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    // Déconnexion de l'usager
-    dispatch(logoutUserAsync());
-        navigate("/argentBank");
-       sessionStorage.removeItem('token',token)
-        localStorage.clear('token',token);
-        sessionStorage.clear('token',token);
+    dispatch(logoutUser());
+    navigate('/');
+    sessionStorage.removeItem('token', token);
+    localStorage.removeItem('token', token);
+    
   };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
-    try {
-      // Utilisation de l'action asynchrone postUserProfile
-      await dispatch(postUserProfileAsync());
-      navigate("/login");
-    } catch (error) {
-      console.error("Une erreur s'est produite lors de la connexion :", error);
-      // Gérer les erreurs si nécessaire
-    }
-  
+    dispatch(postUserProfile());
+    navigate('/login');
   };
+  
+
   // Utilisation de useEffect pour la récupération du profil avant de rendre la barre de navigation en fonction de l'authentification de l'usager connecté par token.
   if (userProfile) {
     return (
       <nav className="main-nav">
-        <NavLink to="/ArgentBank" className="main-nav-logo">
+        <NavLink to="/" className="main-nav-logo">
           <img
             src={logo}
             alt="Argent Bank Logo"
@@ -60,7 +50,7 @@ const Navbar = () => {
             {userProfile && userProfile.userName}
           </NavLink>
           <NavLink
-            to="/ArgentBank"
+            to="/"
             className="main-nav-item"
             onClick={handleSignOut}
           >
@@ -73,7 +63,7 @@ const Navbar = () => {
   } else {
     return (
       <nav className="main-nav">
-        <NavLink to="/ArgentBank" className="main-nav-logo">
+        <NavLink to="/" className="main-nav-logo">
           <img
             src={logo}
             alt="Argent Bank Logo"
@@ -90,7 +80,6 @@ const Navbar = () => {
         </div>
       </nav>
     );
-  }
+  };
 };
-
 export default Navbar;

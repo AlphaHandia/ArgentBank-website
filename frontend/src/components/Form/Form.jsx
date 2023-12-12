@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { loginUserAsync } from "../../features/user/userThunks";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserAsync } from "../../features/user/userSlice"; 
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 
 const Form = () => {
   // Définition des états du formulaire
@@ -12,14 +14,25 @@ const Form = () => {
   // Accès aux fonctions et données de Redux
   const dispatch = useDispatch();
   const loginError = useSelector((state) => state.user.loginError);
+  const token = useSelector((state) => state.user.token);
+  const userProfile =useSelector((state) =>state.user.userProfile)
   // Accès à la fonction de navigation de React Router
   const navigate = useNavigate();
+// Effet pour rediriger l'utilisateur après la connexion
+useEffect(() => {
+  console.log("User Profile:", userProfile);
+  if (userProfile) {
+    console.log("Redirecting to /user-account");
+    navigate('/user-account')
+    
+  }
+}, [token, userProfile, navigate]);
 
   // Gestionnaire de soumission du formulaire
   const handleSignIn = (e) => {
     e.preventDefault();
     // Appel de l'action Redux pour la connexion de l'utilisateur
-    dispatch(loginUserAsync(email, password, navigate, rememberMe));
+    dispatch(loginUserAsync({ email, password, rememberMe }));
   };
 
   let errorMessage = null;

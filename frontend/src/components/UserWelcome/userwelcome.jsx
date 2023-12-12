@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./userwelcome.css";
-import { postUserProfileAsync,putUserNameAsync } from "../../features/user/userSlice";
+import { postUserProfile,putUserNameAsync } from "../../features/user/userThunks";
 import EditName from "../EditName/EditName";
 
 const UserWelcome = () => {
@@ -10,7 +10,7 @@ const UserWelcome = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    dispatch(postUserProfileAsync());
+    dispatch(postUserProfile());
   }, [dispatch]);
 
   const handleEditName = (newUserName) => {

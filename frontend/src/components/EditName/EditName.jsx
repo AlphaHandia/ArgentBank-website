@@ -1,24 +1,17 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./editName.css";
-import { putUserNameAsync } from "../../features/user/userSlice"; 
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { putUserNameAsync } from '../../features/user/userThunks';
 
 const EditName = ({ setIsEditing }) => {
-  // Récupère la fonction dispatch du store Redux
   const dispatch = useDispatch();
-  // Sélectionne les données de l'utilisateur à partir du store Redux
-  const userProfile = useSelector((state) => state.user.userProfile); 
+  const [newUserName, setNewUserName] = useState('');
+  const userProfile = useSelector((state) => state.user.userProfile);
 
-  // Initialise une variable d'état pour le nouveau nom d'utilisateur
-  const [newUserName, setNewUserName] = useState("");
-
-  // Fonction appelée lorsque l'utilisateur clique sur "Save" pour changer le nom d'utilisateur
   const handlechangeUserName = async () => {
     if (newUserName) {
-      // Dispatche une action Redux pour changer le nom d'utilisateur
-      await dispatch(putUserNameAsync(newUserName));
+      dispatch(putUserNameAsync(newUserName));
       setIsEditing(false);
-      setNewUserName("");
+      setNewUserName('');
     }
   };
 
