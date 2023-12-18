@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./userwelcome.css";
-import { postUserProfile,putUserNameAsync } from "../../features/user/userThunks";
+import {
+  postUserProfile,
+  putUserNameAsync,
+} from "../../features/user/userThunks";
 import EditName from "../EditName/EditName";
 
 const UserWelcome = () => {

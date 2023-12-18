@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { putUserNameAsync } from '../../features/user/userThunks';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { putUserNameAsync } from "../../features/user/userThunks";
 
 const EditName = ({ setIsEditing }) => {
   const dispatch = useDispatch();
-  const [newUserName, setNewUserName] = useState('');
+  const [newUserName, setNewUserName] = useState("");
   const userProfile = useSelector((state) => state.user.userProfile);
 
   const handlechangeUserName = async () => {
     if (newUserName) {
       dispatch(putUserNameAsync(newUserName));
       setIsEditing(false);
-      setNewUserName('');
+      setNewUserName("");
     }
   };
 
- 
   const handleCancel = () => {
-   
     setIsEditing(false);
     setNewUserName("");
   };

@@ -7,21 +7,21 @@ import chatIcon from "../assets/images/icon-chat.webp";
 import moneyIcon from "../assets/images/icon-money.webp";
 import securityIcon from "../assets/images/icon-security.webp";
 
-const Home = () =>{
-return (
+const Home = () => {
+  return (
     <div>
-        <Navbar/>
-        <main>
-            <Banner/>
-            <section className="features">
-                <h2 className="sr-only ">Features</h2>
-                <Feature 
-                   title="You are our #1 priority"
-                   content="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
-                   imageSrc={chatIcon}
-                   altText="Chat icon"
-                 />
-                    <Feature
+      <Navbar />
+      <main>
+        <Banner />
+        <section className="features">
+          <h2 className="sr-only ">Features</h2>
+          <Feature
+            title="You are our #1 priority"
+            content="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
+            imageSrc={chatIcon}
+            altText="Chat icon"
+          />
+          <Feature
             title="More savings means higher rates"
             content="The more you save with us, the higher your interest rate will be!"
             imageSrc={moneyIcon}
@@ -34,12 +34,11 @@ return (
             imageSrc={securityIcon}
             altText="Security icon"
           />
-
-            </section>
-        </main>
-        <Footer />
+        </section>
+      </main>
+      <Footer />
     </div>
-);
+  );
 };
 
-export default Home
+export default Home;

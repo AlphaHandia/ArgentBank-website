@@ -4,12 +4,12 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 const Error = () => {
-    return (
-        <div>
-            <Navbar />
-            <Error404 />
-            <Footer />
-        </div>
-    )
-}
-export default Error
+  return (
+    <div>
+      <Navbar />
+      <Error404 />
+      <Footer />
+    </div>
+  );
+};
+export default Error;

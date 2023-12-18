@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Feature = ({ title, content, imageSrc, altText }) => {
   return (
     <div className="feature-item">

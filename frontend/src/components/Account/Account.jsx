@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Account = ({ accountType, accountNumber, amount, description }) => {
   return (
     <div>

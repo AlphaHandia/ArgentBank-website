@@ -3,35 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Form = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-
-
   const dispatch = useDispatch();
   const loginError = useSelector((state) => state.user.loginError);
   const token = useSelector((state) => state.user.token);
-  const userProfile =useSelector((state) =>state.user.userProfile)
-
+  const userProfile = useSelector((state) => state.user.userProfile);
   const navigate = useNavigate();
 
-useEffect(() => {
-  console.log("User Profile:", userProfile);
-  if (userProfile) {
-    console.log("Redirecting to /user-account");
-    navigate('/user-account')
-    
-  }
-}, [token, userProfile, navigate]);
-
+  useEffect(() => {
+    if (userProfile) {
+      navigate("/user-account");
+    }
+  }, [token, userProfile, navigate]);
 
   const handleSignIn = (e) => {
     e.preventDefault();
-
     dispatch(loginUserAsync({ email, password, rememberMe }));
   };
 
@@ -39,7 +28,6 @@ useEffect(() => {
   if (loginError) {
     errorMessage = <p style={{ color: "red" }}>{loginError}</p>;
   }
-
 
   return (
     <main className="main bg-dark">
@@ -80,11 +68,9 @@ useEffect(() => {
           <button className="sign-in-button" type="submit">
             Sign In
           </button>
-          console.log("ok bouton")
         </form>
       </section>
     </main>
   );
 };
-console.log("ok bouton")
 export default Form;
